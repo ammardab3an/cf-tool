@@ -1,14 +1,14 @@
 package config
 
 import (
+	"bytes"
 	"encoding/json"
 	"io/ioutil"
 	"os"
-	"bytes"
 	"path/filepath"
 
+	"github.com/ammardab3an/cf-tool/client"
 	"github.com/fatih/color"
-	"github.com/xalanq/cf-tool/client"
 )
 
 // CodeTemplate config parse code template

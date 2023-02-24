@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"regexp"
 
+	"github.com/ammardab3an/cf-tool/client"
+	"github.com/ammardab3an/cf-tool/util"
 	"github.com/fatih/color"
-	"github.com/xalanq/cf-tool/client"
-	"github.com/xalanq/cf-tool/util"
 )
 
 // SetGenAfterParse set it yes or no
