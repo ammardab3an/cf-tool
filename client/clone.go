@@ -45,7 +45,7 @@ func (c *Client) Clone(handle, rootPath string, ac bool) (err error) {
 	count := 0
 	color.Cyan("Total submissions: %v", total)
 
-	threadNumber := 16
+	threadNumber := 1
 	ch := make(chan cloneData, threadNumber)
 	again := make(chan cloneData, threadNumber)
 	wg := sync.WaitGroup{}
@@ -82,6 +82,8 @@ func (c *Client) Clone(handle, rootPath string, ac bool) (err error) {
 					count++
 					color.Green(fmt.Sprintf(`%v/%v Saved %v`, count, total, filename))
 					mu.Unlock()
+					const WAIT_Between int = 20
+					time.Sleep(time.Duration(WAIT_Between) * time.Millisecond)
 				} else {
 					if err.Error() == ErrorSkip {
 						mu.Lock()
@@ -91,7 +93,7 @@ func (c *Client) Clone(handle, rootPath string, ac bool) (err error) {
 					} else if err.Error() == ErrorTooManyRequest {
 						mu.Lock()
 						count++
-						const WAIT int = 500
+						const WAIT int = 5
 						color.Red(fmt.Sprintf(`%v/%v Error %v: %v. Waiting for %v seconds to continue.`,
 							count, total, s.url, err.Error(), WAIT))
 						mu.Unlock()
