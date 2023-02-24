@@ -41,6 +41,7 @@ Then enjoy the cf-tool~
 Or you can compile it from the source **(go >= 1.12)**:
 
 ```plain
+$ go env -w GO111MODULE=auto 
 $ go get github.com/ammardab3an/cf-tool
 $ cd $GOPATH/src/github.com/ammardab3an/cf-tool
 $ go build -ldflags "-s -w" cf.go
